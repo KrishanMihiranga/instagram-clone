@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Font from 'expo-font';
-import AppLoading from "@/components/AppLoading"; // Adjust path if needed
+import AppLoading from "@/components/screens/AppLoading";
+import { NavigationContainer } from "@react-navigation/native"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import Home from "@/components/screens/Home";
+import Search from "@/components/screens/Search";
+import Reels from "@/components/screens/Reels";
+import Activity from "@/components/screens/Activity";
+import Profile from "@/components/screens/Profile";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { Image } from "react-native";
 
-const Home: React.FC = () => {
+const App: React.FC = () => {
     const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
+    const Stack = createNativeStackNavigator();
+
+
+    const loadFonts = async () => {
+        try {
+            await Font.loadAsync({
+                'Lobster-Regular': require('../assets/fonts/Lobster-Regular.ttf'),
+            });
+            setFontsLoaded(true);
+        } catch (error) {
+            console.error("Error loading fonts:", error);
+        }
+    };
 
     useEffect(() => {
-        const loadFonts = async () => {
-            try {
-                await Font.loadAsync({
-                    'Lobster-Regular': require('../assets/fonts/Lobster-Regular.ttf'),
-                });
-                setFontsLoaded(true);
-            } catch (error) {
-                console.error("Error loading fonts:", error);
-            }
-        };
         loadFonts();
     }, []);
 
@@ -26,19 +37,53 @@ const Home: React.FC = () => {
     }
 
     return (
-        <View className="flex-1 justify-center items-center bg-white flex-col flex">
-            <Text style={styles.text} className="text-red-500">Hello World</Text>
-            <Ionicons name="play" size={20} color="black" />
-        </View>
+        <NavigationContainer independent={true}>
+            <Stack.Navigator initialRouteName="Bottom">
+                <Stack.Screen name="Bottom" component={BottomTabScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
-}
+};
 
-const styles = StyleSheet.create({
-    text: {
-        fontFamily: 'Lobster-Regular',
-        fontSize: 20,
-        marginBottom: 10,
-    },
-});
+const BottomTabScreen: React.FC = () => {
+    const Tab = createBottomTabNavigator();
+    return (
+        <Tab.Navigator
+            screenOptions={({ route }) => ({
+                tabBarShowLabel: false,
+                tabBarStyle: {
+                    height: 50
+                },
+                tabBarIcon: ({ focused, size, color }) => {
+                    let iconComponent;
+                    if (route.name === "Home") {
+                        iconComponent = <Ionicons name={focused ? "home-sharp" : "home-outline"} size={focused ? size + 8 : size + 2} color={color} />;
+                    } else if (route.name === "Search") {
+                        iconComponent = <Ionicons name={focused ? "search" : "search-outline"} size={focused ? size + 8 : size + 2} color={color} />;
+                    } else if (route.name === "Reels") {
+                        iconComponent = <Ionicons name={focused ? "add-circle" : "add-circle-outline"} size={focused ? size + 8 : size + 2} color={color} />;
+                    } else if (route.name === "Activity") {
+                        iconComponent = <Ionicons name={focused ? "heart" : "heart-outline"} size={focused ? size + 8 : size + 2} color={color} />;
+                    } else if (route.name === "Profile") {
 
-export default Home;
+                        iconComponent = (
+                            <Image
+                                source={require('../assets/images/profile.png')}
+                                style={{ width: focused ? size + 8 : size + 2, height: focused ? size + 8 : size + 2, borderRadius: size / 2 }}
+                            />
+                        );
+                    }
+                    return iconComponent;
+                }
+            })}
+        >
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Search" component={Search} />
+            <Tab.Screen name="Reels" component={Reels} />
+            <Tab.Screen name="Activity" component={Activity} />
+            <Tab.Screen name="Profile" component={Profile} />
+        </Tab.Navigator>
+    );
+};
+
+export default App;
