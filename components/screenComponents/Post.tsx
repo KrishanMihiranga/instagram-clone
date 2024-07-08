@@ -22,7 +22,7 @@ const Post: React.FC = () => {
             postPersonImage: require('../../storage/images/profile1.jpg'),
             postImage: require('../../storage/images/post2.jpg'),
             postDescription:"Feathers in flight, nature's melody",
-            likes: 803,
+            likes: 978,
             isLiked: false,
         },
         {
@@ -30,7 +30,7 @@ const Post: React.FC = () => {
             postPersonImage: require('../../storage/images/profile5.jpg'),
             postImage: require('../../storage/images/post3.jpg'),
             postDescription:"Growing together, one drop at a time",
-            likes: 803,
+            likes: 145,
             isLiked: false,
         },
         {
@@ -38,7 +38,7 @@ const Post: React.FC = () => {
             postPersonImage: require('../../storage/images/profile2.jpg'),
             postImage: require('../../storage/images/post5.jpg'),
             postDescription:"Embrace the wild beauty that breathes life into our souls",
-            likes: 803,
+            likes: 344,
             isLiked: false,
         },
         {
@@ -46,7 +46,7 @@ const Post: React.FC = () => {
             postPersonImage: require('../../storage/images/profile3.jpg'),
             postImage: require('../../storage/images/post6.jpg'),
             postDescription:"Nature's symphony soothes the soul and awakens the spirit",
-            likes: 803,
+            likes: 475,
             isLiked: false,
         },
         {
@@ -54,7 +54,7 @@ const Post: React.FC = () => {
             postPersonImage: require('../../storage/images/profile4.jpg'),
             postImage: require('../../storage/images/post7.jpg'),
             postDescription:"Lighting the path to new ideas and brighter tomorrows",
-            likes: 803,
+            likes: 247,
             isLiked: false,
         },
     ];

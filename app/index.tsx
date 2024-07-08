@@ -11,7 +11,7 @@ import Activity from "@/components/screens/Activity";
 import Profile from "@/components/screens/Profile";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Image } from "react-native";
-import Status from "@/components/screenComponents/Status"; 
+import Status from "@/components/screenComponents/Status";
 
 const App: React.FC = () => {
     const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
@@ -54,6 +54,7 @@ const BottomTabScreen: React.FC = () => {
             screenOptions={({ route }) => ({
                 tabBarShowLabel: false,
                 headerShown: false,
+                tabBarHideOnKeyboard: true,
                 tabBarStyle: {
                     height: 50
                 },
