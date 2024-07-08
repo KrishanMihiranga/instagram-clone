@@ -11,6 +11,7 @@ import Activity from "@/components/screens/Activity";
 import Profile from "@/components/screens/Profile";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Image } from "react-native";
+import Status from "@/components/screenComponents/Status"; 
 
 const App: React.FC = () => {
     const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
@@ -38,8 +39,9 @@ const App: React.FC = () => {
 
     return (
         <NavigationContainer independent={true}>
-            <Stack.Navigator initialRouteName="Bottom">
+            <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Bottom">
                 <Stack.Screen name="Bottom" component={BottomTabScreen} />
+                <Stack.Screen name="Status" component={Status} />
             </Stack.Navigator>
         </NavigationContainer>
     );
@@ -51,6 +53,7 @@ const BottomTabScreen: React.FC = () => {
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 tabBarShowLabel: false,
+                headerShown: false,
                 tabBarStyle: {
                     height: 50
                 },
