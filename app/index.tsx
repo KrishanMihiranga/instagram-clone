@@ -12,6 +12,7 @@ import Profile from "@/components/screens/Profile";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Image } from "react-native";
 import Status from "@/components/screenComponents/Status";
+import FriendProile from "@/components/screenComponents/FriendProile";
 
 const App: React.FC = () => {
     const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
@@ -42,6 +43,7 @@ const App: React.FC = () => {
             <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Bottom">
                 <Stack.Screen name="Bottom" component={BottomTabScreen} />
                 <Stack.Screen name="Status" component={Status} />
+                <Stack.Screen name ="FriendProile" component={FriendProile}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
