@@ -11,7 +11,7 @@ import { useState } from "react";
 interface FriendProfileParams {
     name: string;
     accountName: string;
-    profileImage: string;
+    profileImage: any;
     follow: boolean;
     posts: number;
     followers: number;
@@ -38,14 +38,14 @@ const FriendProfile: React.FC<FriendProfileProps> = ({ route, navigation }) => {
             </View>
             <ProfileBody
                 name={name}
-                accountName={accountName}
+                accountName={null}
                 profileImage={profileImage}
                 follow={follow}
                 posts={posts}
                 followers={followers}
                 following={following}
             />
-            <ProfileButtons id={1} />
+            <ProfileButtons id={1} name={""} accountName={""} profileImage={undefined} />
             <Text style={{ paddingVertical: 10, fontSize: 15, fontWeight: 'bold' }}>Suggested for you</Text>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingTop: 10, }}>
                 {

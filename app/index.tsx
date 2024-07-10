@@ -13,6 +13,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { Image } from "react-native";
 import Status from "@/components/screenComponents/Status";
 import FriendProile from "@/components/screenComponents/FriendProile";
+import EditProfile from "@/components/screenComponents/EditProfile";
 
 const App: React.FC = () => {
     const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
@@ -44,6 +45,7 @@ const App: React.FC = () => {
                 <Stack.Screen name="Bottom" component={BottomTabScreen} />
                 <Stack.Screen name="Status" component={Status} />
                 <Stack.Screen name ="FriendProile" component={FriendProile}/>
+                <Stack.Screen name ="EditProfile" component={EditProfile} />
             </Stack.Navigator>
         </NavigationContainer>
     );
